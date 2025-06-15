@@ -1,4 +1,4 @@
-# 📊 Quantum ESPRESSO Basics for DFT — Beginner to Advanced
+# 📊 Quantum ESPRESSO Basics for DFT 
 
 Welcome! This repository is a personal learning journey into using **Quantum ESPRESSO** from scratch for **Density Functional Theory (DFT)** simulations. This README covers everything from basic concepts to your first successful SCF calculation using QE.
 
