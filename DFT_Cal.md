@@ -55,8 +55,9 @@ Where:
 ### 📐 Birch-Murnaghan Equation:
 
 $$
-E_{tot}(a) = E_0 + \frac{9V_0 B_0}{16} \left\{\left[\left(\frac{a_0}{a}\right)^2 - 1\right]^3 B_0' + \left[\left(\frac{a_0}{a}\right)^2 - 1\right]^2 \left[6 - 4\left(\frac{a_0}{a}\right)^2\right]\right\}
+E_{\text{tot}}(a) = E_0 + \frac{9V_0 B_0}{16} \left( \left[ \left( \frac{a_0}{a} \right)^2 - 1 \right]^3 B_0' + \left[ \left( \frac{a_0}{a} \right)^2 - 1 \right]^2 \left[ 6 - 4 \left( \frac{a_0}{a} \right)^2 \right] \right)
 $$
+
 
 This allows broader and more accurate fitting of DFT data.
 
