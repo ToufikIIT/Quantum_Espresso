@@ -134,16 +134,14 @@ $$
 * (0, 0, 0)
 * $\left(\frac{2a}{3}, \frac{2a}{\sqrt{3}}, \frac{c}{2}\right)$
 
-### Fractional Coordinates
+## Fractional Coordinates
 
 Fractional positions help describe atomic locations within arbitrary unit cells:
 
-$$
-\vec{r}_j = \sum_{i=1}^{3} f_{ij} \vec{a}_i
-$$
+<p><strong>r</strong> = ∑<sub>i=1</sub><sup>3</sup> f<sub>ij</sub> <strong>a</strong><sub>i</sub></p>
 
+Where <code>f<sub>ij</sub> ∈ [0, 1]</code>
 
-Where $f_{ij} \in [0, 1)$
 
 ### HCP Energy vs. $c/a$
 
