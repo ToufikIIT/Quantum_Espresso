@@ -1,141 +1,120 @@
-# 🧪 DFT Calculations for Simple Solids
+# 🧮 DFT Calculations for Simple Solids — Full Notes
+
 
 ---
 
-## 📚 Table of Contents
+## 🧱 1. Periodic Structures in Solids
 
-1. [Introduction](#introduction)
-2. [Periodic Structures, Supercells, and Lattice Parameters](#periodic-structures-supercells-and-lattice-parameters)
-3. [Face-Centered Cubic Materials](#face-centered-cubic-materials)
-4. [Hexagonal Close-Packed Materials](#hexagonal-close-packed-materials)
----
+**Unit cell** = smallest repeating 3D volume in a solid  
+**Lattice vectors** \( \vec{a}_1, \vec{a}_2, \vec{a}_3 \) describe periodicity:
 
-## 🔹 Introduction
+- Simple cubic: \( \vec{r}_{n_1, n_2, n_3} = n_1 a \hat{x} + n_2 a \hat{y} + n_3 a \hat{z} \)
+- **Supercell**: Large collection of unit cells used in DFT
 
-In DFT studies of metals, a fundamental question is:
-> **"What is the crystal structure of the lowest energy?"**
-
-DFT helps answer this by calculating total energies for different configurations.
+Atoms repeat using periodic boundary conditions (PBC), making DFT simulations feasible.
 
 ---
 
-## 🔹 Periodic Structures, Supercells, and Lattice Parameters
+## 📉 2. Lattice Constant and Energy Optimization
 
-A **simple cubic lattice** consists of atoms at:
+To find equilibrium structure:
+1. Vary lattice parameter \( a \)
+2. Compute total energy \( E_{tot}(a) \)
+3. Fit to a smooth curve
+
+### ➕ Taylor Expansion:
 \[
-\mathbf{r} = (n_1 a, n_2 a, n_3 a)
+E_{tot}(a) \approx E_0 + \alpha(a - a_0) + \beta(a - a_0)^2
 \]
 
-We define:
-- **Unit cell**: basic repeating unit
-- **Supercell**: expanded cell with periodic images
-- **Lattice parameter \( a \)**: edge length
-
-### 📈 DFT Energy vs Lattice Constant (Simple Cubic)
-
-![Simple Cubic Energy Graph](./svgs/simple_cubic_energy.svg)
-
-#### Taylor Expansion:
+Simplified fit:
 \[
-E_{tot}(a) \approx E_{tot}(a_0) + \alpha(a - a_0) + \beta(a - a_0)^2
+E_{tot}(a) = E_0 + \beta(a - a_0)^2
 \]
 
-#### Quadratic Fit:
-\[
-E_{tot}(a) = E_0 + \beta (a - a_0)^2
-\]
+Where:
+- \( a_0 \): Optimal lattice constant
+- \( B_0 \): Bulk modulus
+- \( E_0 \): Minimum energy
 
-#### Birch-Murnaghan Equation (2.3):
+### ⚙️ Birch–Murnaghan Equation:
+Used for more accurate fitting:
+
 \[
-E_{tot}(a) = E_0 + \frac{9V_0 B_0}{16} \left\{ \left[ \left( \frac{a_0}{a} \right)^2 - 1 \right]^3 B_0' + \left[ \left( \frac{a_0}{a} \right)^2 - 1 \right]^2 \left[ 6 - 4 \left( \frac{a_0}{a} \right)^2 \right] \right\}
+E_{tot}(a) = E_0 + \frac{9 V_0 B_0}{16} \left\{ \left[\left(\frac{a_0}{a}\right)^2 - 1\right]^3 B'_0 + \left[\left(\frac{a_0}{a}\right)^2 - 1\right]^2 \left[6 - 4\left(\frac{a_0}{a}\right)^2\right] \right\}
 \]
 
 ---
 
-## 🔹 Face-Centered Cubic Materials (FCC)
+## 💠 3. FCC Structure (Face-Centered Cubic)
 
-FCC is a common structure for metals like Cu. The FCC cell has atoms at:
-\[
-(0,0,0), \quad (a/2,a/2,0), \quad (a/2,0,a/2), \quad (0,a/2,a/2)
-\]
+Common for Cu and other metals.
 
-**Primitive cell vectors**:
-\[
-\mathbf{a}_1 = a\left(\frac{1}{2}, 0, \frac{1}{2}\right), \quad 
-\mathbf{a}_2 = a\left(0, \frac{1}{2}, \frac{1}{2}\right), \quad 
-\mathbf{a}_3 = a\left(\frac{1}{2}, \frac{1}{2}, 0\right)
-\]
+- Atom positions in conventional cell:
+  \[
+  (0, 0, 0),\quad (a/2, a/2, 0),\quad (a/2, 0, a/2),\quad (0, a/2, a/2)
+  \]
 
-- Nearest neighbor distance = \( a/\sqrt{2} \)
-- Cell vectors are non-orthogonal.
+- Primitive lattice vectors:
+  \[
+  \vec{a}_1 = a \left(\frac{1}{2}, 0, \frac{1}{2}\right),\quad
+  \vec{a}_2 = a \left(0, \frac{1}{2}, \frac{1}{2}\right),\quad
+  \vec{a}_3 = a \left(\frac{1}{2}, \frac{1}{2}, 0\right)
+  \]
 
-### 📐 FCC Lattice Geometry
+- Nearest neighbor distance: \( a/\sqrt{2} \)
 
-![FCC Structure](./svgs/fcc_structure.svg)
-
-### 📈 Energy vs Lattice Constant (FCC Cu)
-
-![FCC Energy Graph](./svgs/fcc_energy.svg)
-
-Minimum energy at:
-- \( a = 3.64 \, \text{Å} \)
-- \( B_0 = 142 \, \text{GPa} \)
+### ✅ FCC Cu DFT Results:
+- Energy minimized at \( a = 3.64 \) Å
+- Bulk modulus: \( B_0 = 142 \) GPa
 
 ---
 
-## 🔹 Hexagonal Close-Packed (HCP) Materials
+## ⬢ 4. HCP Structure (Hexagonal Close-Packed)
 
-HCP is another densely packed structure.
+HCP and FCC have same packing efficiency (74%) but different geometry.
 
-**Lattice vectors:**
-\[
-\mathbf{a}_1 = (a, 0, 0), \quad 
-\mathbf{a}_2 = \left(\frac{a}{2}, \frac{a\sqrt{3}}{2}, 0\right), \quad 
-\mathbf{a}_3 = (0, 0, c)
-\]
+- Lattice vectors:
+  \[
+  \vec{a}_1 = (a, 0, 0),\quad
+  \vec{a}_2 = \left(\frac{a}{2}, \frac{a \sqrt{3}}{2}, 0\right),\quad
+  \vec{a}_3 = (0, 0, c)
+  \]
 
-Atoms placed at:
-\[
-(0,0,0), \quad \left(\frac{2a}{3}, \frac{2a}{\sqrt{3}}, \frac{c}{2}\right)
-\]
+- Atom positions:
+  \[
+  (0,0,0),\quad \left(\frac{2a}{3}, \frac{2a}{\sqrt{3}}, \frac{c}{2}\right)
+  \]
 
-### 📐 HCP Lattice Geometry
+- **Fractional coordinates**: 
+  \[
+  \vec{r}_i = \sum_{j=1}^3 f_{ij} \vec{a}_j
+  \]
 
-![HCP Structure](./svgs/hcp_structure.svg)
-
-### 📈 Energy vs c/a Ratio (HCP)
-
-![HCP Energy vs c/a](./svgs/hcp_energy.svg)
-
-> Minimum occurs near \( c/a = 1.60 \), close to ideal \( 1.633 \), but not lower than FCC → Cu is FCC in reality.
-
----
-
-## 🔹 Crystal Structure Prediction
-
-To predict structure:
-- Compare DFT energies of multiple lattice types
-- Use high-precision convergence
-- Adjust all variables (lattice constants, atom positions)
-
-> **HCP needs optimization of 2 parameters \( a, c \), while cubic needs 1.**
+### 🔍 c/a Ratio Effect:
+- Ideal \( c/a = 1.633 \)
+- DFT finds lowest energy near \( c/a = 1.60 \)
+- Plot of \( E_{tot}(a) \) for several \( c/a \) ratios used
 
 ---
 
-## ✅ Summary
+## 🧠 5. Crystal Structure Prediction Strategy
 
-- DFT accurately predicts stable lattice structures
-- Simple cubic: rarely real but educational
-- FCC: energetically favored for Cu
-- HCP: used for comparison, same density as FCC
-- Birch-Murnaghan fit improves accuracy over wide \( a \) range
+To determine which structure (FCC or HCP) is more stable:
+
+- Use DFT to compute total energy for each structure
+- Compare energies at optimized lattice constants
+- Cu prefers **FCC** due to slightly lower energy
+
+> ⚠️ Energy differences are small (1–5 kJ/mol), so precision is critical.
+
 
 ---
 
-## 📎 References
+## 📚 References
 
-- *Density Functional Theory: A Practical Introduction* – Sholl & Steckel
-- Quantum ESPRESSO Docs: https://www.quantum-espresso.org/
+- Sholl & Steckel, *Density Functional Theory: A Practical Introduction*
+- Quantum ESPRESSO Project: https://www.quantum-espresso.org/
 
 ---
 
