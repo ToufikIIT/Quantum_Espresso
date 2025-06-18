@@ -139,9 +139,7 @@ $$
 Fractional positions help describe atomic locations within arbitrary unit cells:
 
 $$
-\[
-\vec{r}_j = \sum_{i=1}^3 f_{ij} \vec{a}_i
-\]
+\vec{r}_j = \sum_{i=1}^{3} f_{ij} \vec{a}_i
 $$
 
 
